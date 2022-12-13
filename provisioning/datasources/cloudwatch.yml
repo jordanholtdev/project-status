@@ -5,7 +5,7 @@ datasources:
       type: cloudwatch
       jsonData:
           authType: keys
-          defaultRegion: us-east-1
+          defaultRegion: ${AWS_REGION}
       secureJsonData:
           accessKey: ${AWS_ACCESS_KEY}
           secretKey: ${AWS_SECRET_KEY}
