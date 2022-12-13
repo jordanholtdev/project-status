@@ -1,0 +1,18 @@
+# Configuration file version
+apiVersion: 1
+deleteDatasources:
+    - name: GitHub Repository
+    - name: GitHub Repo Insights
+# List of data sources to insert/update depending on what's
+# available in the database.
+datasources:
+    # <string, required> Sets the name you use to refer to
+    # the data source in panels and queries.
+    - name: GitHub Repository
+      # <string, required> Sets the data source type.
+      type: grafana-github-datasource
+      jsonData:
+          owner: ''
+          repository: ''
+      secureJsonData:
+          accessToken: ${GITHUB_TOKEN}

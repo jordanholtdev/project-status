@@ -1,0 +1,1098 @@
+{
+    "annotations": {
+        "list": [
+            {
+                "builtIn": 1,
+                "datasource": {
+                    "type": "grafana",
+                    "uid": "-- Grafana --"
+                },
+                "enable": true,
+                "hide": true,
+                "iconColor": "rgba(0, 211, 255, 1)",
+                "name": "Annotations & Alerts",
+                "target": {
+                    "limit": 100,
+                    "matchAny": false,
+                    "tags": [],
+                    "type": "dashboard"
+                },
+                "type": "dashboard"
+            }
+        ]
+    },
+    "editable": true,
+    "fiscalYearStartMonth": 0,
+    "graphTooltip": 0,
+    "id": 1,
+    "links": [],
+    "liveNow": false,
+    "panels": [
+        {
+            "collapsed": false,
+            "gridPos": {
+                "h": 1,
+                "w": 24,
+                "x": 0,
+                "y": 0
+            },
+            "id": 12,
+            "panels": [],
+            "title": "AWS ",
+            "type": "row"
+        },
+        {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": {
+                "type": "cloudwatch",
+                "uid": "P034F075C744B399F"
+            },
+            "fieldConfig": {
+                "defaults": {
+                    "links": [],
+                    "unit": "none"
+                },
+                "overrides": []
+            },
+            "fill": 1,
+            "fillGradient": 0,
+            "gridPos": {
+                "h": 9,
+                "w": 24,
+                "x": 0,
+                "y": 1
+            },
+            "hiddenSeries": false,
+            "id": 6,
+            "legend": {
+                "alignAsTable": false,
+                "avg": false,
+                "current": false,
+                "max": false,
+                "min": false,
+                "show": true,
+                "total": false,
+                "values": false
+            },
+            "lines": true,
+            "linewidth": 1,
+            "maxDataPoints": 1813,
+            "nullPointMode": "connected",
+            "options": {
+                "alertThreshold": true
+            },
+            "percentage": false,
+            "pluginVersion": "9.3.1",
+            "pointradius": 2,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [
+                {
+                    "$$hashKey": "object:472",
+                    "alias": "Inbound",
+                    "transform": "negative-Y"
+                }
+            ],
+            "spaceLength": 10,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+                {
+                    "datasource": {
+                        "type": "cloudwatch",
+                        "uid": "P034F075C744B399F"
+                    },
+                    "dimensions": {},
+                    "expression": "SUM(REMOVE_EMPTY(SEARCH('{AWS/EC2,InstanceId} MetricName=\"NetworkIn\"', 'Sum', $period)))/$period",
+                    "id": "",
+                    "label": "Inbound",
+                    "matchExact": true,
+                    "metricEditorMode": 1,
+                    "metricName": "",
+                    "metricQueryType": 0,
+                    "namespace": "",
+                    "period": "$period",
+                    "queryMode": "Metrics",
+                    "refId": "A",
+                    "region": "us-east-1",
+                    "sqlExpression": "",
+                    "statistic": "Average"
+                },
+                {
+                    "datasource": {
+                        "type": "cloudwatch",
+                        "uid": "P034F075C744B399F"
+                    },
+                    "dimensions": {},
+                    "expression": "SUM(REMOVE_EMPTY(SEARCH('{AWS/EC2,InstanceId} MetricName=\"NetworkOut\"', 'Sum', $period)))/$period",
+                    "hide": false,
+                    "id": "",
+                    "label": "Outbound",
+                    "matchExact": true,
+                    "metricEditorMode": 1,
+                    "metricName": "",
+                    "metricQueryType": 0,
+                    "namespace": "",
+                    "period": "$period",
+                    "queryMode": "Metrics",
+                    "refId": "B",
+                    "region": "us-east-1",
+                    "sqlExpression": "",
+                    "statistic": "Average"
+                }
+            ],
+            "thresholds": [],
+            "timeRegions": [],
+            "title": "Total network traffic outbound (+) and inbound (-) [bytes/sec]",
+            "tooltip": {
+                "shared": true,
+                "sort": 0,
+                "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+                "mode": "time",
+                "show": true,
+                "values": []
+            },
+            "yaxes": [
+                {
+                    "$$hashKey": "object:240",
+                    "format": "none",
+                    "logBase": 1,
+                    "show": true
+                },
+                {
+                    "$$hashKey": "object:241",
+                    "format": "short",
+                    "logBase": 1,
+                    "min": "0",
+                    "show": true
+                }
+            ],
+            "yaxis": {
+                "align": false
+            }
+        },
+        {
+            "datasource": {
+                "type": "cloudwatch",
+                "uid": "P034F075C744B399F"
+            },
+            "description": "",
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "palette-classic"
+                    },
+                    "custom": {
+                        "axisCenteredZero": false,
+                        "axisColorMode": "text",
+                        "axisLabel": "",
+                        "axisPlacement": "auto",
+                        "barAlignment": 0,
+                        "drawStyle": "line",
+                        "fillOpacity": 0,
+                        "gradientMode": "none",
+                        "hideFrom": {
+                            "legend": false,
+                            "tooltip": false,
+                            "viz": false
+                        },
+                        "lineInterpolation": "linear",
+                        "lineWidth": 1,
+                        "pointSize": 5,
+                        "scaleDistribution": {
+                            "type": "linear"
+                        },
+                        "showPoints": "auto",
+                        "spanNulls": false,
+                        "stacking": {
+                            "group": "A",
+                            "mode": "none"
+                        },
+                        "thresholdsStyle": {
+                            "mode": "off"
+                        }
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            },
+                            {
+                                "color": "red",
+                                "value": 80
+                            }
+                        ]
+                    }
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 9,
+                "w": 12,
+                "x": 0,
+                "y": 10
+            },
+            "id": 2,
+            "options": {
+                "legend": {
+                    "calcs": [],
+                    "displayMode": "list",
+                    "placement": "bottom",
+                    "showLegend": true
+                },
+                "tooltip": {
+                    "mode": "single",
+                    "sort": "none"
+                }
+            },
+            "targets": [
+                {
+                    "datasource": {
+                        "type": "cloudwatch",
+                        "uid": "P034F075C744B399F"
+                    },
+                    "dimensions": {
+                        "DBInstanceIdentifier": "rds-mysql-crypto-dashboard"
+                    },
+                    "expression": "",
+                    "id": "",
+                    "label": "",
+                    "matchExact": true,
+                    "metricEditorMode": 0,
+                    "metricName": "CPUUtilization",
+                    "metricQueryType": 0,
+                    "namespace": "AWS/RDS",
+                    "period": "",
+                    "queryMode": "Metrics",
+                    "refId": "A",
+                    "region": "default",
+                    "sqlExpression": "",
+                    "statistic": "Average"
+                }
+            ],
+            "title": "RDS MySQL - CPU Utilization",
+            "type": "timeseries"
+        },
+        {
+            "datasource": {
+                "type": "cloudwatch",
+                "uid": "P034F075C744B399F"
+            },
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "continuous-RdYlGr",
+                        "seriesBy": "last"
+                    },
+                    "custom": {
+                        "axisCenteredZero": false,
+                        "axisColorMode": "text",
+                        "axisLabel": "",
+                        "axisPlacement": "auto",
+                        "barAlignment": 0,
+                        "drawStyle": "line",
+                        "fillOpacity": 12,
+                        "gradientMode": "none",
+                        "hideFrom": {
+                            "legend": false,
+                            "tooltip": false,
+                            "viz": false
+                        },
+                        "lineInterpolation": "stepBefore",
+                        "lineStyle": {
+                            "fill": "solid"
+                        },
+                        "lineWidth": 1,
+                        "pointSize": 2,
+                        "scaleDistribution": {
+                            "log": 2,
+                            "type": "log"
+                        },
+                        "showPoints": "auto",
+                        "spanNulls": false,
+                        "stacking": {
+                            "group": "A",
+                            "mode": "none"
+                        },
+                        "thresholdsStyle": {
+                            "mode": "off"
+                        }
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            },
+                            {
+                                "color": "red",
+                                "value": 80
+                            }
+                        ]
+                    },
+                    "unit": "Bps"
+                },
+                "overrides": [
+                    {
+                        "__systemRef": "hideSeriesFrom",
+                        "matcher": {
+                            "id": "byNames",
+                            "options": {
+                                "mode": "exclude",
+                                "names": ["VolumeWriteBytes"],
+                                "prefix": "All except:",
+                                "readOnly": true
+                            }
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.hideFrom",
+                                "value": {
+                                    "legend": false,
+                                    "tooltip": false,
+                                    "viz": true
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            "gridPos": {
+                "h": 9,
+                "w": 12,
+                "x": 12,
+                "y": 10
+            },
+            "id": 4,
+            "options": {
+                "legend": {
+                    "calcs": [],
+                    "displayMode": "list",
+                    "placement": "bottom",
+                    "showLegend": true
+                },
+                "tooltip": {
+                    "mode": "single",
+                    "sort": "none"
+                }
+            },
+            "pluginVersion": "9.3.1",
+            "targets": [
+                {
+                    "datasource": {
+                        "type": "cloudwatch",
+                        "uid": "P034F075C744B399F"
+                    },
+                    "dimensions": {
+                        "VolumeId": "vol-058625e52b30a152f"
+                    },
+                    "expression": "",
+                    "hide": false,
+                    "id": "",
+                    "label": "",
+                    "matchExact": true,
+                    "metricEditorMode": 0,
+                    "metricName": "VolumeReadBytes",
+                    "metricQueryType": 0,
+                    "namespace": "AWS/EBS",
+                    "period": "300",
+                    "queryMode": "Metrics",
+                    "refId": "A",
+                    "region": "default",
+                    "sqlExpression": "",
+                    "statistic": "Sum"
+                },
+                {
+                    "datasource": {
+                        "type": "cloudwatch",
+                        "uid": "P034F075C744B399F"
+                    },
+                    "dimensions": {
+                        "VolumeId": "vol-058625e52b30a152f"
+                    },
+                    "expression": "",
+                    "hide": false,
+                    "id": "",
+                    "label": "",
+                    "matchExact": true,
+                    "metricEditorMode": 0,
+                    "metricName": "VolumeWriteBytes",
+                    "metricQueryType": 0,
+                    "namespace": "AWS/EBS",
+                    "period": "300",
+                    "queryMode": "Metrics",
+                    "refId": "B",
+                    "region": "default",
+                    "sqlExpression": "",
+                    "statistic": "Sum"
+                }
+            ],
+            "title": "Total volumes read (+) and write (-) [bytes/sec]",
+            "type": "timeseries"
+        },
+        {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": {
+                "type": "cloudwatch",
+                "uid": "P034F075C744B399F"
+            },
+            "fieldConfig": {
+                "defaults": {
+                    "links": []
+                },
+                "overrides": []
+            },
+            "fill": 0,
+            "fillGradient": 0,
+            "gridPos": {
+                "h": 8,
+                "w": 12,
+                "x": 0,
+                "y": 19
+            },
+            "hiddenSeries": false,
+            "id": 8,
+            "legend": {
+                "alignAsTable": false,
+                "avg": false,
+                "current": false,
+                "max": false,
+                "min": false,
+                "rightSide": true,
+                "show": false,
+                "total": false,
+                "values": false
+            },
+            "lines": true,
+            "linewidth": 1,
+            "nullPointMode": "null",
+            "options": {
+                "alertThreshold": true
+            },
+            "percentage": false,
+            "pluginVersion": "9.3.1",
+            "pointradius": 2,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+                {
+                    "datasource": {
+                        "type": "cloudwatch",
+                        "uid": "P034F075C744B399F"
+                    },
+                    "dimensions": {},
+                    "expression": "REMOVE_EMPTY(SEARCH('{AWS/Lambda} MetricName=\"Invocations\"', 'Sum', $period))/$period",
+                    "id": "",
+                    "label": "",
+                    "matchExact": true,
+                    "metricEditorMode": 1,
+                    "metricName": "",
+                    "metricQueryType": 0,
+                    "namespace": "",
+                    "period": "$period",
+                    "queryMode": "Metrics",
+                    "refId": "A",
+                    "region": "default",
+                    "sqlExpression": "",
+                    "statistic": "Average"
+                }
+            ],
+            "thresholds": [],
+            "timeRegions": [],
+            "title": "Total Lambda invocations [count/sec]",
+            "tooltip": {
+                "shared": true,
+                "sort": 0,
+                "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+                "mode": "time",
+                "show": true,
+                "values": []
+            },
+            "yaxes": [
+                {
+                    "format": "short",
+                    "logBase": 1,
+                    "min": "0",
+                    "show": true
+                },
+                {
+                    "format": "short",
+                    "logBase": 1,
+                    "show": true
+                }
+            ],
+            "yaxis": {
+                "align": false
+            }
+        },
+        {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": {
+                "type": "cloudwatch",
+                "uid": "P034F075C744B399F"
+            },
+            "fieldConfig": {
+                "defaults": {
+                    "links": []
+                },
+                "overrides": []
+            },
+            "fill": 0,
+            "fillGradient": 0,
+            "gridPos": {
+                "h": 8,
+                "w": 12,
+                "x": 12,
+                "y": 19
+            },
+            "hiddenSeries": false,
+            "id": 10,
+            "legend": {
+                "alignAsTable": true,
+                "avg": false,
+                "current": false,
+                "max": true,
+                "min": false,
+                "rightSide": true,
+                "show": true,
+                "sort": "max",
+                "sortDesc": true,
+                "total": false,
+                "values": true
+            },
+            "lines": true,
+            "linewidth": 1,
+            "nullPointMode": "null",
+            "options": {
+                "alertThreshold": true
+            },
+            "percentage": false,
+            "pluginVersion": "9.3.1",
+            "pointradius": 2,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+                {
+                    "datasource": {
+                        "type": "cloudwatch",
+                        "uid": "P034F075C744B399F"
+                    },
+                    "dimensions": {},
+                    "expression": "REMOVE_EMPTY(SEARCH('{AWS/Lambda,FunctionName} MetricName=\"Invocations\"', 'Sum', $period))/$period",
+                    "id": "",
+                    "label": "",
+                    "matchExact": true,
+                    "metricEditorMode": 1,
+                    "metricName": "",
+                    "metricQueryType": 0,
+                    "namespace": "",
+                    "period": "$period",
+                    "queryMode": "Metrics",
+                    "refId": "A",
+                    "region": "default",
+                    "sqlExpression": "",
+                    "statistic": "Average"
+                }
+            ],
+            "thresholds": [],
+            "timeRegions": [],
+            "title": "Lambda invocations per function [count/sec]",
+            "tooltip": {
+                "shared": true,
+                "sort": 2,
+                "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+                "mode": "time",
+                "show": true,
+                "values": []
+            },
+            "yaxes": [
+                {
+                    "$$hashKey": "object:753",
+                    "format": "short",
+                    "logBase": 1,
+                    "min": "0",
+                    "show": true
+                },
+                {
+                    "$$hashKey": "object:754",
+                    "format": "short",
+                    "logBase": 1,
+                    "show": true
+                }
+            ],
+            "yaxis": {
+                "align": false
+            }
+        },
+        {
+            "collapsed": false,
+            "gridPos": {
+                "h": 1,
+                "w": 24,
+                "x": 0,
+                "y": 27
+            },
+            "id": 14,
+            "panels": [],
+            "title": "Github",
+            "type": "row"
+        },
+        {
+            "datasource": {
+                "type": "grafana-github-datasource",
+                "uid": "PD6730B7B4D624DDA"
+            },
+            "fieldConfig": {
+                "defaults": {
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            },
+                            {
+                                "color": "red",
+                                "value": 80
+                            }
+                        ]
+                    }
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 4,
+                "w": 2,
+                "x": 0,
+                "y": 28
+            },
+            "id": 18,
+            "options": {
+                "colorMode": "value",
+                "graphMode": "area",
+                "justifyMode": "auto",
+                "orientation": "auto",
+                "reduceOptions": {
+                    "calcs": ["mean"],
+                    "fields": "",
+                    "values": false
+                },
+                "text": {},
+                "textMode": "auto"
+            },
+            "pluginVersion": "9.3.1",
+            "targets": [
+                {
+                    "datasource": {
+                        "type": "grafana-github-datasource",
+                        "uid": "PD6730B7B4D624DDA"
+                    },
+                    "options": {
+                        "gitRef": "main",
+                        "query": "",
+                        "timeField": 1
+                    },
+                    "owner": "jordanholtdev",
+                    "queryType": "Repositories",
+                    "refId": "A",
+                    "repository": ""
+                }
+            ],
+            "title": "Repositories",
+            "transformations": [
+                {
+                    "id": "reduce",
+                    "options": {
+                        "reducers": ["count"]
+                    }
+                }
+            ],
+            "type": "stat"
+        },
+        {
+            "datasource": {
+                "type": "grafana-github-datasource",
+                "uid": "PD6730B7B4D624DDA"
+            },
+            "fieldConfig": {
+                "defaults": {
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            },
+                            {
+                                "color": "red",
+                                "value": 80
+                            }
+                        ]
+                    }
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 4,
+                "w": 3,
+                "x": 2,
+                "y": 28
+            },
+            "id": 19,
+            "options": {
+                "colorMode": "value",
+                "graphMode": "area",
+                "justifyMode": "auto",
+                "orientation": "auto",
+                "reduceOptions": {
+                    "calcs": ["mean"],
+                    "fields": "",
+                    "values": false
+                },
+                "text": {},
+                "textMode": "auto"
+            },
+            "pluginVersion": "9.3.1",
+            "targets": [
+                {
+                    "datasource": {
+                        "type": "grafana-github-datasource",
+                        "uid": "PD6730B7B4D624DDA"
+                    },
+                    "options": {
+                        "gitRef": "main",
+                        "query": "",
+                        "timeField": 1
+                    },
+                    "owner": "jordanholtdev",
+                    "queryType": "Commits",
+                    "refId": "A",
+                    "repository": "crypto-dashboard-frontend"
+                }
+            ],
+            "title": "Crypto Dashboard FE Commits",
+            "transformations": [
+                {
+                    "id": "reduce",
+                    "options": {
+                        "reducers": ["count"]
+                    }
+                }
+            ],
+            "type": "stat"
+        },
+        {
+            "datasource": {
+                "type": "grafana-github-datasource",
+                "uid": "PD6730B7B4D624DDA"
+            },
+            "fieldConfig": {
+                "defaults": {
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            },
+                            {
+                                "color": "red",
+                                "value": 80
+                            }
+                        ]
+                    }
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 4,
+                "w": 3,
+                "x": 5,
+                "y": 28
+            },
+            "id": 20,
+            "links": [],
+            "options": {
+                "colorMode": "value",
+                "graphMode": "area",
+                "justifyMode": "auto",
+                "orientation": "auto",
+                "reduceOptions": {
+                    "calcs": ["mean"],
+                    "fields": "",
+                    "values": false
+                },
+                "text": {},
+                "textMode": "auto"
+            },
+            "pluginVersion": "9.3.1",
+            "targets": [
+                {
+                    "datasource": {
+                        "type": "grafana-github-datasource",
+                        "uid": "PD6730B7B4D624DDA"
+                    },
+                    "options": {
+                        "gitRef": "main",
+                        "query": "",
+                        "timeField": 1
+                    },
+                    "owner": "jordanholtdev",
+                    "queryType": "Commits",
+                    "refId": "A",
+                    "repository": "projects"
+                }
+            ],
+            "title": "Projects FE Commits",
+            "transformations": [
+                {
+                    "id": "reduce",
+                    "options": {
+                        "reducers": ["count"]
+                    }
+                }
+            ],
+            "type": "stat"
+        },
+        {
+            "datasource": {
+                "type": "grafana-github-datasource",
+                "uid": "PD6730B7B4D624DDA"
+            },
+            "fieldConfig": {
+                "defaults": {
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            },
+                            {
+                                "color": "red",
+                                "value": 80
+                            }
+                        ]
+                    }
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 4,
+                "w": 3,
+                "x": 8,
+                "y": 28
+            },
+            "id": 21,
+            "links": [],
+            "options": {
+                "colorMode": "value",
+                "graphMode": "area",
+                "justifyMode": "auto",
+                "orientation": "auto",
+                "reduceOptions": {
+                    "calcs": ["mean"],
+                    "fields": "",
+                    "values": false
+                },
+                "text": {},
+                "textMode": "auto"
+            },
+            "pluginVersion": "9.3.1",
+            "targets": [
+                {
+                    "datasource": {
+                        "type": "grafana-github-datasource",
+                        "uid": "PD6730B7B4D624DDA"
+                    },
+                    "options": {
+                        "gitRef": "main",
+                        "query": "",
+                        "timeField": 1
+                    },
+                    "owner": "jordanholtdev",
+                    "queryType": "Commits",
+                    "refId": "A",
+                    "repository": "github-social-feed"
+                }
+            ],
+            "title": "Github Feed FE Commits",
+            "transformations": [
+                {
+                    "id": "reduce",
+                    "options": {
+                        "reducers": ["count"]
+                    }
+                }
+            ],
+            "type": "stat"
+        },
+        {
+            "datasource": {
+                "type": "grafana-github-datasource",
+                "uid": "PD6730B7B4D624DDA"
+            },
+            "fieldConfig": {
+                "defaults": {
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": null
+                            }
+                        ]
+                    }
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 4,
+                "w": 3,
+                "x": 11,
+                "y": 28
+            },
+            "id": 23,
+            "options": {
+                "colorMode": "value",
+                "graphMode": "area",
+                "justifyMode": "auto",
+                "orientation": "auto",
+                "reduceOptions": {
+                    "calcs": ["mean"],
+                    "fields": "",
+                    "values": false
+                },
+                "text": {},
+                "textMode": "auto"
+            },
+            "pluginVersion": "9.3.1",
+            "targets": [
+                {
+                    "datasource": {
+                        "type": "grafana-github-datasource",
+                        "uid": "PD6730B7B4D624DDA"
+                    },
+                    "dimensions": {},
+                    "expression": "",
+                    "id": "",
+                    "label": "",
+                    "matchExact": true,
+                    "metricEditorMode": 0,
+                    "metricName": "",
+                    "metricQueryType": 0,
+                    "namespace": "",
+                    "options": {
+                        "timeField": 1
+                    },
+                    "owner": "jordanholtdev",
+                    "period": "",
+                    "queryMode": "Metrics",
+                    "queryType": "Pull_Requests",
+                    "refId": "A",
+                    "region": "default",
+                    "repository": "projects",
+                    "sqlExpression": "",
+                    "statistic": "Average"
+                }
+            ],
+            "title": "Projects Pull Requests Created",
+            "transformations": [
+                {
+                    "id": "reduce",
+                    "options": {
+                        "reducers": ["count"]
+                    }
+                }
+            ],
+            "type": "stat"
+        }
+    ],
+    "refresh": false,
+    "schemaVersion": 37,
+    "style": "dark",
+    "tags": [],
+    "templating": {
+        "list": [
+            {
+                "current": {
+                    "selected": true,
+                    "text": "300",
+                    "value": "300"
+                },
+                "hide": 0,
+                "includeAll": false,
+                "label": "Period [Sec]",
+                "multi": false,
+                "name": "period",
+                "options": [
+                    {
+                        "selected": false,
+                        "text": "60",
+                        "value": "60"
+                    },
+                    {
+                        "selected": true,
+                        "text": "300",
+                        "value": "300"
+                    },
+                    {
+                        "selected": false,
+                        "text": "3600",
+                        "value": "3600"
+                    }
+                ],
+                "query": "60,300,3600",
+                "queryValue": "",
+                "skipUrlSync": false,
+                "type": "custom"
+            }
+        ]
+    },
+    "time": {
+        "from": "now-6h",
+        "to": "now"
+    },
+    "timepicker": {},
+    "timezone": "",
+    "title": "JH-Main",
+    "uid": "yfi5QcKVz",
+    "version": 2,
+    "weekStart": ""
+}
