@@ -2,7 +2,7 @@ name: Build Docker Container and push to ECR
 on:
   push:
     branches:
-      - main
+      - prod
 
 jobs:
   deploy:
@@ -10,14 +10,21 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - name: Amazon ECR "Login" Action for GitHub Actions
-      # You may pin to the exact commit or the version.
-      # uses: aws-actions/amazon-ecr-login@261a7de32bda11ba01f4d75c4ed6caf3739e54be
-        uses: aws-actions/amazon-ecr-login@v1
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1 # More information on this action can be found below in the 'AWS Credentials' section
         with:
-          # A comma-delimited list of AWS account IDs that are associated with the ECR Private registries. If you do not specify a registry, the default ECR Private registry is assumed. If 'public' is given as input to 'registry-type', this input is ignored.
-          registries: # optional
-          # Whether to skip explicit logout of the registries during post-job cleanup. Exists for backward compatibility on self-hosted runners. Not recommended. Options: ['true', 'false']
-          skip-logout: # optional, default is false
-          # Which ECR registry type to log into. Options: [private, public]
-          registry-type: # optional, default is private
+          role-to-assume: ${{ secrets.AWS_ROLE }}
+          role-session-name: ghsession
+          aws-region: ${{ secrets.AWS_REGION }}
+    
+      - name: Amazon ECR "Login" Action for GitHub Actions
+        env:
+          REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          REPOSITORY: ${{ secrets.ECR_REPO_NAME }}
+          IMAGE_TAG: ${{ github.sha }}
+        run: |
+          docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG .
+          docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
