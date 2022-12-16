@@ -26,7 +26,7 @@ jobs:
             - name: Amazon ECR "Login" Action for GitHub Actions
               env:
                   REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-                  REPOSITORY: ${{ secrets.ECR_REPO_NAME }}
+                  REPOSITORY: project-status
                   IMAGE_TAG: ${{ github.sha }}
               run: |
                   docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG .
