@@ -1,1 +1,6 @@
+# environment vars
 .env
+
+# EB configs
+.ebextensions
+Dockerrun.aws.json
