@@ -14,7 +14,7 @@ services:
                 - 'GF_AWS_PROFILES:${AWS_PROFILES}'
                 - 'GF_AWS_default_ACCESS_KEY_ID:${AWS_ACCESS_KEY}'
                 - 'GF_AWS_default_SECRET_ACCESS_KEY:${AWS_SECRET_KEY}'
-                - 'GF_AWS_default_REGION:${us-east-1}'
+                - 'GF_AWS_default_REGION:${AWS_REGION}'
         container_name: grafana
         ports:
             - 3000:3000
